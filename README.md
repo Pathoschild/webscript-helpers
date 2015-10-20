@@ -26,7 +26,7 @@ For example, Amazon Web Services sends alert emails that look like this:
 This module lets you tokenise simple strings like the subject:
 
 ```lua
-local service, subject = tokeniser.getCaptures(payload.subject, "^AWS ([^-]+) Notification - (.+)")
+local service, subject = tokeniser.capture(payload.subject, "^AWS ([^-]+) Notification - (.+)")
 ```
 
 Or tokenise complex strings:

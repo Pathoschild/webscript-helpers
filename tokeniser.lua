@@ -1,4 +1,4 @@
-local string, table, pairs = string, table, pairs
+local string, table, pairs, unpack = string, table, pairs, unpack
 
 --[[
 This module extracts tokens from raw text based on the specified patterns. It's
@@ -10,7 +10,7 @@ _DESCRIPTION = 'Text payload tokeniser'
 _VERSION = 'tokeniser 0.1'
 
 --[[
-getCaptures
+capture
 
 Returns substrings matched by capturing groups in a regex pattern. This is
 equivalent to the values returned by string.find without the start & end
@@ -21,10 +21,10 @@ Parameters
 	pattern: The regex pattern containing capturing groups.
 
 Example:
-	local username, messages = tokeniser.getCaptures("Hi Bob! You have 42 points.", "Hi ([^!]+)! You have (\d+) points")
+	local username, messages = tokeniser.capture("Hi Bob! You have 42 points.", "Hi ([^!]+)! You have (\d+) points")
 ]]
-function getCaptures(text, pattern)
-	local values = {string.find(subject, pattern)}
+function capture(text, pattern)
+	local values = {string.find(text, pattern)}
 	table.remove(values, 1)
 	table.remove(values, 1)
 	return unpack(values)

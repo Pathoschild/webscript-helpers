@@ -1,4 +1,4 @@
-local alert, pcall = alert, pcall
+local alert, json, pcall = alert, json, pcall
 
 --[[
 This module provides utilities for error-monitoring webhooks on Webscript.io.
