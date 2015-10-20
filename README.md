@@ -1,5 +1,12 @@
-A collection of simple Lua modules for writing Webscript.io webhooks
-(see _[Including Modules From GitHub](https://www.webscript.io/documentation#modules)_).
+A collection of simple Lua modules for writing Webscript.io webhooks. They
+[can be imported directly on Webscript.io](https://www.webscript.io/documentation#modules)
+using the module name. For example:
+
+```lua
+local tokeniser = require('Pathoschild/webscript-helpers/tokeniser')
+```
+
+This is an early experiment for my own use; it has few features and may change at any time.
 
 ### Tokeniser
 This module extracts tokens from arbitrary text. It's mainly intended for
@@ -34,3 +41,16 @@ tokeniser.parse(tokens, payload.body, {
 ```
 
 (See the docstrings in the Lua file for details.)
+
+### Slack
+This module provides a minimal Slack client for using an 'Incoming WebHooks'
+integration configured via Slack.
+
+Basic usage:
+
+```lua
+local client = slack.getClient('https://incoming-webhook-url')
+client.post('Hi there!')
+```
+
+(You can also customise the display name, avatar URL, and channel; see docstrings in the Lua file for more details.)
