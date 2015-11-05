@@ -1,4 +1,4 @@
-local http, json = http, json
+local error, http, json = error, http, json
 
 --[[
 This module provides a minimal Slack client for using an 'Incoming WebHooks'
@@ -40,6 +40,7 @@ function getClient(settings)
 			• username (optional): the display name to show in Slack; defaults to the integration settings in Slack.
 			• icon_url (optional): the URL of the avatar to show in Slack; defaults to the integration settings in Slack.
 			• channel (optional): the channel to notify (like '#channel'); defaults to the integration settings in Slack.
+			• attachments (optional): an array of objects matching Slack's rich-formatting attachment schema.
 	]]
 	function client.post(text, options)
 		options = options or {}
@@ -50,7 +51,8 @@ function getClient(settings)
 				username = options.username or settings.username,
 				icon_url = options.icon_url or settings.icon_url,
 				channel = options.channel or settings.channel,
-				text = text
+				text = text,
+				attachments = options.attachments
 			})
 		})
 		
